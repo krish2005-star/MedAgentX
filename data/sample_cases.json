@@ -1,0 +1,17 @@
+[
+  {
+    "id": "case_001",
+    "type": "simple",
+    "patient_case": "A 45-year-old patient has persistent cough, wheezing, and shortness of breath for two weeks."
+  },
+  {
+    "id": "case_002",
+    "type": "multi_domain",
+    "patient_case": "A 62-year-old patient has chest discomfort, shortness of breath, dizziness, and occasional numbness in the left arm."
+  },
+  {
+    "id": "case_003",
+    "type": "complex",
+    "patient_case": "A 68-year-old patient has chest discomfort, shortness of breath, dizziness, weakness, abdominal discomfort, and a history of hypertension and diabetes."
+  }
+]
