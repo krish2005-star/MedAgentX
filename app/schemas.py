@@ -1,5 +1,5 @@
-from pydantic import BaseModel, field_validator, model_validator
 from typing import Literal
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 from .registry import SPECIALIST_REGISTRY
 
@@ -33,3 +33,14 @@ class PlannerOutput(BaseModel):
             )
 
         return self
+
+
+class SpecialistOutput(BaseModel):
+    specialist: str
+    assessment: str
+    possible_conditions: list[str] = Field(default_factory=list)
+    supporting_findings: list[str] = Field(default_factory=list)
+    missing_information: list[str] = Field(default_factory=list)
+    risk_level: Literal["LOW", "MODERATE", "HIGH", "UNCERTAIN"]
+    rationale: str
+    limitations: list[str] = Field(default_factory=list)
