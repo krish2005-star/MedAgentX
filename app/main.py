@@ -7,6 +7,10 @@ from .state import PlannerState
 from .planner import planner_agent
 from .specialists.pulmonology import pulmonology_agent
 from .specialists.cardiology import cardiology_agent
+from .specialists.neurology import neurology_agent
+from .specialists.gastroenterology import gastroenterology_agent
+from .specialists.general_medicine import general_medicine_agent
+
 
 
 # Build the LangGraph
@@ -15,11 +19,18 @@ builder = StateGraph(PlannerState)
 builder.add_node("planner_agent", planner_agent)
 builder.add_node("pulmonology_agent", pulmonology_agent)
 builder.add_node("cardiology_agent", cardiology_agent)
+builder.add_node("neurology_agent", neurology_agent)
+builder.add_node("gastroenterology_agent", gastroenterology_agent)
+builder.add_node("general_medicine_agent", general_medicine_agent)
 
 builder.add_edge(START, "planner_agent")
 builder.add_edge("planner_agent", "pulmonology_agent")
 builder.add_edge("pulmonology_agent", "cardiology_agent")
-builder.add_edge("cardiology_agent", END)
+builder.add_edge("cardiology_agent", "neurology_agent")
+builder.add_edge("neurology_agent", "gastroenterology_agent")
+builder.add_edge("gastroenterology_agent", "general_medicine_agent")
+builder.add_edge("general_medicine_agent", END)
+
 
 graph = builder.compile()
 
