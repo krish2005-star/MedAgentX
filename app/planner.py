@@ -11,7 +11,8 @@ load_dotenv()
 
 llm = ChatGoogleGenerativeAI(
     model=os.getenv("PLANNER_MODEL"),
-    temperature=0
+    temperature=0,
+    timeout=60
 )
 
 structured_llm = llm.with_structured_output(

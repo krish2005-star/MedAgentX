@@ -6,16 +6,20 @@ from langgraph.graph import StateGraph, START, END
 from .state import PlannerState
 from .planner import planner_agent
 from .specialists.pulmonology import pulmonology_agent
+from .specialists.cardiology import cardiology_agent
 
 
 # Build the LangGraph
 builder = StateGraph(PlannerState)
+
 builder.add_node("planner_agent", planner_agent)
 builder.add_node("pulmonology_agent", pulmonology_agent)
+builder.add_node("cardiology_agent", cardiology_agent)
 
 builder.add_edge(START, "planner_agent")
 builder.add_edge("planner_agent", "pulmonology_agent")
-builder.add_edge("pulmonology_agent", END)
+builder.add_edge("pulmonology_agent", "cardiology_agent")
+builder.add_edge("cardiology_agent", END)
 
 graph = builder.compile()
 

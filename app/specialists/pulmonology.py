@@ -44,10 +44,21 @@ def pulmonology_agent(state: PlannerState) -> dict:
 
     try:
         output = structured_llm.invoke(prompt)
-        if output.specialist.lower() != "pulmonology":
+        valid_names = {
+            "pulmonology",
+            "pulmonology specialist",
+            "pulmonology specialist agent",
+        }
+
+        specialist_name = output.specialist.strip().lower()
+
+        if specialist_name not in valid_names:
             raise ValueError(
                 f"Unexpected specialist name: {output.specialist}"
             )
+
+        # Normalize the name for downstream processing
+        output.specialist = "Pulmonology"
         return {
             "specialist_outputs": {
                 **state.get("specialist_outputs", {}),
