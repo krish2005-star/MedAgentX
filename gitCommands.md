@@ -71,7 +71,6 @@ Common mistakes
 • Accidentally working on main: check git branch before coding.
 • Accidentally committed .env: remove it from tracking and rotate the exposed API key; .gitignore does not erase history.
 • Merge conflict: resolve carefully, run tests, then finish the merge.
-
 Quick workflow
 git switch main
 git pull origin main

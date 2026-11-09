@@ -28,7 +28,7 @@ def gastroenterology_agent(state: PlannerState) -> dict:
     )
     try:
         output = structured_llm.invoke(prompt)
-        accepted = ("gastroenterology", "gastroenterology specialist")
+        accepted = ("gastroenterology", "gastroenterology specialist","gastroenterologist")
         if output.specialist.strip().lower() not in accepted:
             raise ValueError(f"Unexpected specialist name: {output.specialist}")
         output.specialist = "Gastroenterology"
