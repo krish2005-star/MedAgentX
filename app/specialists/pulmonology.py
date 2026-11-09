@@ -48,6 +48,7 @@ def pulmonology_agent(state: PlannerState) -> dict:
             "pulmonology",
             "pulmonology specialist",
             "pulmonology specialist agent",
+            "pulmonologist"
         }
 
         specialist_name = output.specialist.strip().lower()
